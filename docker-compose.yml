@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:17.2-alpine3.20
+    restart: always
+    environment:
+      POSTGRES_DB: "warehouse"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "123"
+    ports:
+      - "5436:5432"
+    volumes:
+      - warehouse-pg-data-user:/var/lib/postgresql/data
+    networks:      
+      - warehouse-network
+  
+  webapp:
+    container_name: warehouse-api
+    image: warehouse
+    build:
+      context: .
+      dockerfile: ./Presentation/Warehouse.WebApi/Dockerfile
+    ports:
+      - "5001:8080"
+    environment:
+      - ConnectionStrings__WarehouseDatabase=Host=host.docker.internal;Port=5435;Database=warehouse;Username=user;Password=123
+      - Serilog__WriteTo__0__Args__serverUrl=http://host.docker.internal:5341
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - common-network
+      - warehouse-network
+      
+volumes:
+    warehouse-pg-data-user:
+    
+networks:
+  common-network: 
+    name: bookstore_common-network
+    external: true
+  warehouse-network:
+    driver: bridge
+  
