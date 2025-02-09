@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Asp.Versioning;
+using Microsoft.AspNetCore.Mvc;
 using Warehouse.Domain.Dtos;
 using Warehouse.Domain.Services;
 
 namespace Warehouse.WebApi.Controllers
 {
 	[ApiController]
-	[Route("api/[controller]")]
+	[Route("api/v{version:apiVersion}/[controller]")]
+	[ApiVersion("1.0")]
 	public class WarehouseItemController : ControllerBase
 	{
 		private readonly IWarehouseItemService _warehouseService;
@@ -36,7 +38,7 @@ namespace Warehouse.WebApi.Controllers
 			}
 			catch (ArgumentException ex)
 			{
-				return BadRequest(ex.Message); // Возвращаем 400 Bad Request, если книга не найдена
+				return BadRequest(ex.Message);
 			}
 		}
 
