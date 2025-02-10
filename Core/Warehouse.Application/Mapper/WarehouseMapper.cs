@@ -11,7 +11,7 @@ namespace Warehouse.Application.Mapper
 		public static partial WarehouseItem ToEntity(WarehouseItemDto dto);
 		public static partial WarehouseItem ToEntity(CreateWarehouseItemDto dto);
 
-		//public static partial BookDto ToDto(Book entity);
-		//public static partial Book ToEntity(BookDto dto);
+		public static partial WriteOffOperationDto ToDto(WriteOffOperation entity);
+		public static partial WriteOffOperation ToEntity(WriteOffOperationDto dto);
 	}
 }
