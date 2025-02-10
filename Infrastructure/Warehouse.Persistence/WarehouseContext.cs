@@ -8,8 +8,8 @@ namespace Warehouse.Persistence
 	{
 		public DbSet<WarehouseItem> WarehouseItems { get; set; }
 		public DbSet<BaseOperation> BaseOperations { get; set; }
-		//public DbSet<ReceiptOperation> ReceiptOperations { get; set; }
-		//public DbSet<WriteOffOperation> WriteOffOperations { get; set; }
+		public DbSet<ReceiptOperation> ReceiptOperations { get; set; }
+		public DbSet<WriteOffOperation> WriteOffOperations { get; set; }
 		public DbSet<OperationItem> OperationItems { get; set; }
 
 		public WarehouseContext(DbContextOptions<WarehouseContext> options) : base(options)

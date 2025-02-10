@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Warehouse.Persistence;
@@ -11,9 +12,11 @@ using Warehouse.Persistence;
 namespace Warehouse.Persistence.Migrations
 {
     [DbContext(typeof(WarehouseContext))]
-    partial class WarehouseContextModelSnapshot : ModelSnapshot
+    [Migration("20250210211207_Operations")]
+    partial class Operations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,8 +40,8 @@ namespace Warehouse.Persistence.Migrations
 
                     b.Property<string>("operation_type")
                         .IsRequired()
-                        .HasMaxLength(21)
-                        .HasColumnType("character varying(21)")
+                        .HasMaxLength(13)
+                        .HasColumnType("character varying(13)")
                         .HasColumnName("operation_type");
 
                     b.HasKey("Id")
@@ -109,20 +112,6 @@ namespace Warehouse.Persistence.Migrations
                         .HasName("pk_warehouse_items");
 
                     b.ToTable("warehouse_items", (string)null);
-                });
-
-            modelBuilder.Entity("Warehouse.Domain.Entities.ReceiptOperation", b =>
-                {
-                    b.HasBaseType("Warehouse.Domain.Entities.BaseOperation");
-
-                    b.HasDiscriminator().HasValue("ReceiptOperation");
-                });
-
-            modelBuilder.Entity("Warehouse.Domain.Entities.WriteOffOperation", b =>
-                {
-                    b.HasBaseType("Warehouse.Domain.Entities.BaseOperation");
-
-                    b.HasDiscriminator().HasValue("WriteOffOperation");
                 });
 
             modelBuilder.Entity("Warehouse.Domain.Entities.OperationItem", b =>
