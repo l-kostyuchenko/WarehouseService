@@ -3,6 +3,8 @@ using Warehouse.Domain.Repositories;
 using Warehouse.Application.Mapper;
 using Serilog;
 using Warehouse.Domain.Services;
+using System.Threading;
+using Warehouse.Domain.Entities;
 
 namespace Warehouse.Application.Services
 {
@@ -37,6 +39,22 @@ namespace Warehouse.Application.Services
 		public async Task UpdateWarehouseItemAsync(WarehouseItemDto updateWarehouseItemDto, CancellationToken cancellationToken)
 		{
 			var warehouseItem = WarehouseMapper.ToEntity(updateWarehouseItemDto);
+
+			await _repository.UpdateAsync(warehouseItem, cancellationToken);
+		}
+
+		public async Task ChangeCount(int id, int count, CancellationToken cancellationToken)
+		{
+			var warehouseItem = await _repository.GetByIdAsync(id, cancellationToken);
+			if (warehouseItem == null)
+				warehouseItem = await _repository.CreateAsync(new WarehouseItem
+				{
+					Id = id
+				}, cancellationToken);
+
+			warehouseItem.Quantity += count;
+			if (warehouseItem.Quantity < 0)
+				throw new InvalidOperationException("Количество меньше нуля");
 
 			await _repository.UpdateAsync(warehouseItem, cancellationToken);
 		}
