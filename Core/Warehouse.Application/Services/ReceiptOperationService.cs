@@ -6,27 +6,27 @@ using Warehouse.Domain.Interfaces.Services;
 
 namespace Warehouse.Application.Services
 {
-	public class WriteOffOperationService : IWriteOffOperationService
+	public class ReceiptOperationService : IReceiptOperationService
 	{
-		private readonly IWriteOffOperationRepository _repository;
+		private readonly IReceiptOperationRepository _repository;
 		private readonly ILogger _logger;
 
-		public WriteOffOperationService(IWriteOffOperationRepository repository, ILogger logger)
+		public ReceiptOperationService(IReceiptOperationRepository repository, ILogger logger)
 		{
 			_repository = repository;
-			_logger = logger.ForContext<WriteOffOperationService>();
+			_logger = logger.ForContext<ReceiptOperationService>();
 		}
 
-		public async Task<WriteOffOperationDto> GetByIdAsync(int id, CancellationToken cancellationToken)
+		public async Task<ReceiptOperationDto> GetByIdAsync(int id, CancellationToken cancellationToken)
 		{
 			var operation = await _repository.GetByIdAsync(id, cancellationToken);
 
 			return WarehouseMapper.ToDto(operation);
 		}
 
-		public async Task<WriteOffOperationDto> CreateAsync(WriteOffOperationDto createWriteOffOperationDto, CancellationToken cancellationToken)
+		public async Task<ReceiptOperationDto> CreateAsync(ReceiptOperationDto createReceiptOperationDto, CancellationToken cancellationToken)
 		{
-			var operation = WarehouseMapper.ToEntity(createWriteOffOperationDto);
+			var operation = WarehouseMapper.ToEntity(createReceiptOperationDto);
 
 			await _repository.AddAsync(operation, cancellationToken);
 
@@ -34,9 +34,9 @@ namespace Warehouse.Application.Services
 			return WarehouseMapper.ToDto(operation);
 		}
 
-		public async Task UpdateAsync(WriteOffOperationDto updateWriteOffOperationDto, CancellationToken cancellationToken)
+		public async Task UpdateAsync(ReceiptOperationDto updateReceiptOperationDto, CancellationToken cancellationToken)
 		{
-			var warehouseItem = WarehouseMapper.ToEntity(updateWriteOffOperationDto);
+			var warehouseItem = WarehouseMapper.ToEntity(updateReceiptOperationDto);
 
 			await _repository.UpdateAsync(warehouseItem, cancellationToken);
 		}

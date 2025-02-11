@@ -13,5 +13,8 @@ namespace Warehouse.Application.Mapper
 
 		public static partial WriteOffOperationDto ToDto(WriteOffOperation entity);
 		public static partial WriteOffOperation ToEntity(WriteOffOperationDto dto);
+
+		public static partial ReceiptOperationDto ToDto(ReceiptOperation entity);
+		public static partial ReceiptOperation ToEntity(ReceiptOperationDto dto);
 	}
 }

@@ -11,7 +11,7 @@ namespace Warehouse.Application.Extensions
 		{
 			services.AddScoped<IWarehouseItemService, WarehouseItemService>();
 			services.AddScoped<IWriteOffOperationService, WriteOffOperationService>();
-
+			services.AddScoped<IReceiptOperationService, ReceiptOperationService>();
 		}
 	}
 }

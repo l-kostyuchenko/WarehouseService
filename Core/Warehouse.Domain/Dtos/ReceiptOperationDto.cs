@@ -1,6 +1,6 @@
 ﻿namespace Warehouse.Domain.Dtos
 {
-	public class WriteOffOperationDto
+	public class ReceiptOperationDto
 	{
 		public int Id { get; set; }
 

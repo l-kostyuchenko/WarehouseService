@@ -8,17 +8,17 @@ namespace Warehouse.WebApi.Controllers
 	[ApiController]
 	[Route("api/v{version:apiVersion}/[controller]")]
 	[ApiVersion("2.0")]
-	public class WriteOffOperationController : ControllerBase
+	public class ReceiptOperationController : ControllerBase
 	{
-		private readonly IWriteOffOperationService _service;
+		private readonly IReceiptOperationService _service;
 
-		public WriteOffOperationController(IWriteOffOperationService service)
+		public ReceiptOperationController(IReceiptOperationService service)
 		{
 			_service = service;
 		}
 
 		[HttpGet("{id}")]
-		public async Task<ActionResult<WriteOffOperationDto>> GetWriteOffOperation(int id, CancellationToken cancellationToken)
+		public async Task<ActionResult<ReceiptOperationDto>> GetReceiptOperation(int id, CancellationToken cancellationToken)
 		{
 			var item = await _service.GetByIdAsync(id, cancellationToken);
 			if (item == null)
@@ -29,12 +29,12 @@ namespace Warehouse.WebApi.Controllers
 		}
 
 		[HttpPost]
-		public async Task<ActionResult<WriteOffOperationDto>> CreateWriteOffOperation(WriteOffOperationDto createDto, CancellationToken cancellationToken)
+		public async Task<ActionResult<ReceiptOperationDto>> CreateReceiptOperation(ReceiptOperationDto createDto, CancellationToken cancellationToken)
 		{
 			try
 			{
 				var item = await _service.CreateAsync(createDto, cancellationToken);
-				return CreatedAtAction(nameof(GetWriteOffOperation), new { id = item.Id }, item);
+				return CreatedAtAction(nameof(GetReceiptOperation), new { id = item.Id }, item);
 			}
 			catch (ArgumentException ex)
 			{
@@ -43,7 +43,7 @@ namespace Warehouse.WebApi.Controllers
 		}
 
 		[HttpPut]
-		public async Task<IActionResult> UpdateWriteOffOperation(WriteOffOperationDto updateDto, CancellationToken cancellationToken)
+		public async Task<IActionResult> UpdateReceiptOperation(ReceiptOperationDto updateDto, CancellationToken cancellationToken)
 		{
 			try
 			{
@@ -57,7 +57,7 @@ namespace Warehouse.WebApi.Controllers
 		}
 
 		[HttpDelete("{id}")]
-		public async Task<IActionResult> DeleteWriteOffOperation(int id, CancellationToken cancellationToken)
+		public async Task<IActionResult> DeleteReceiptOperation(int id, CancellationToken cancellationToken)
 		{
 			await _service.DeleteAsync(id, cancellationToken);
 			return NoContent();
