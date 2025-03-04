@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Warehouse.Application", "Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Warehouse.Persistence", "Infrastructure\Warehouse.Persistence\Warehouse.Persistence.csproj", "{B16F865B-0C1F-4028-BAD5-A7E119A726A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Warehouse.WebApi", "Presentation\Warehouse.WebApi\Warehouse.WebApi.csproj", "{2DE5E44C-0054-488A-AEE6-453694398F2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Warehouse.WebApi", "Presentation\Warehouse.WebApi\Warehouse.WebApi.csproj", "{2DE5E44C-0054-488A-AEE6-453694398F2D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{FAED561F-BB85-4CDD-9288-F560772E5378}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookStore.Warehouse.Client", "BookStore.Warehouse.Client\BookStore.Warehouse.Client.csproj", "{CA30261B-10F0-4E96-B35A-1E1775B49C07}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{2DE5E44C-0054-488A-AEE6-453694398F2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DE5E44C-0054-488A-AEE6-453694398F2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DE5E44C-0054-488A-AEE6-453694398F2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA30261B-10F0-4E96-B35A-1E1775B49C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA30261B-10F0-4E96-B35A-1E1775B49C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA30261B-10F0-4E96-B35A-1E1775B49C07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA30261B-10F0-4E96-B35A-1E1775B49C07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{15DED67E-50E5-43DE-B7B0-0063517E7FCC} = {0791E39C-CF2B-4A60-A3A5-15D365FB73F5}
 		{B16F865B-0C1F-4028-BAD5-A7E119A726A5} = {7733C819-E564-4570-A7C6-21EF74193EFB}
 		{2DE5E44C-0054-488A-AEE6-453694398F2D} = {FAED561F-BB85-4CDD-9288-F560772E5378}
+		{CA30261B-10F0-4E96-B35A-1E1775B49C07} = {7733C819-E564-4570-A7C6-21EF74193EFB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C270E862-775A-4475-9DCE-78C19E1690CB}

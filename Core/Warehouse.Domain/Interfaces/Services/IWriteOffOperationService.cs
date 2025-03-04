@@ -1,4 +1,5 @@
-﻿using Warehouse.Domain.Dtos;
+﻿using BookStore.Warehouse.Client.Dtos;
+using Warehouse.Domain.Dtos;
 
 namespace Warehouse.Domain.Interfaces.Services
 {
@@ -8,5 +9,7 @@ namespace Warehouse.Domain.Interfaces.Services
 		Task DeleteAsync(int id, CancellationToken cancellationToken);
 		Task<WriteOffOperationDto> GetByIdAsync(int id, CancellationToken cancellationToken);
 		Task UpdateAsync(WriteOffOperationDto updateWriteOffOperationDto, CancellationToken cancellationToken);
+
+		Task ProcessOrder(OrderDto order);
 	}
 }

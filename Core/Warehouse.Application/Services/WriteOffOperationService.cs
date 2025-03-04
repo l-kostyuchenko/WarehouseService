@@ -4,6 +4,7 @@ using Serilog;
 using Warehouse.Domain.Interfaces.Repositories;
 using Warehouse.Domain.Interfaces.Services;
 using Warehouse.Domain.Services;
+using BookStore.Warehouse.Client.Dtos;
 
 namespace Warehouse.Application.Services
 {
@@ -68,6 +69,13 @@ namespace Warehouse.Application.Services
 			}
 
 			_logger.Information("Удалена операция Списание с ИД={id}", id);
+		}
+
+		public async Task ProcessOrder(OrderDto order)
+		{
+			_logger.Information("Обработано Списание с ИД={id}", order.Id);
+
+			await Task.CompletedTask; 
 		}
 	}
 }

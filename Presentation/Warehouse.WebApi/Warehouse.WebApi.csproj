@@ -37,6 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\BookStore.Warehouse.Client\BookStore.Warehouse.Client.csproj" />
     <ProjectReference Include="..\..\Core\Warehouse.Application\Warehouse.Application.csproj" />
     <ProjectReference Include="..\..\Core\Warehouse.Domain\Warehouse.Domain.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Warehouse.Persistence\Warehouse.Persistence.csproj" />
