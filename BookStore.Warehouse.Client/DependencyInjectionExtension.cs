@@ -1,10 +1,10 @@
 ﻿using BookStore.Warehouse.Client.Interfaces;
+using BookStore.Warehouse.Client.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Refit;
 using System.Xml.Linq;
-//using Warehouse.Client.Interfaces;
 
 namespace BookStore.Warehouse.Client
 {
@@ -23,6 +23,8 @@ namespace BookStore.Warehouse.Client
 				c.BaseAddress = new Uri(opt.Services[serviceName].BaseAddress));
 
 			services.AddOptions<IntegrationServicesOptions>().Configure(section.Bind);
+
+			services.AddScoped<IWarehouseService, WarehouseService>();
 		}
 	}
 

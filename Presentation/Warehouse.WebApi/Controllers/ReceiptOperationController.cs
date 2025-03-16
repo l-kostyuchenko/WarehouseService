@@ -7,7 +7,7 @@ namespace Warehouse.WebApi.Controllers
 {
 	[ApiController]
 	[Route("api/v{version:apiVersion}/[controller]")]
-	[ApiVersion("2.0")]
+	[ApiVersion("1.0")]
 	public class ReceiptOperationController : ControllerBase
 	{
 		private readonly IReceiptOperationService _service;

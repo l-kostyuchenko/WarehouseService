@@ -1,17 +1,11 @@
 ﻿using BookStore.Warehouse.Client.Dtos;
 using Refit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-//using Warehouse.Client.Dtos;
 
 namespace BookStore.Warehouse.Client.Interfaces
 {
-    public interface IWarehouseApi
+	public interface IWarehouseApi
     {
-        [Post("/api/warehouse/processorder")] 
+        [Post("/api/Warehouse/ProcessOrder")] 
         Task<ApiResponse<string>> ProcessOrder([Body] OrderDto order); 
     }
 }
