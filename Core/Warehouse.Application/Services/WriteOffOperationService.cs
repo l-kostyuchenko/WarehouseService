@@ -30,7 +30,7 @@ namespace Warehouse.Application.Services
 
 		public async Task<WriteOffOperationDto> CreateAsync(WriteOffOperationDto createWriteOffOperationDto, CancellationToken cancellationToken)
 		{
-			var operation = WarehouseMapper.ToEntity(createWriteOffOperationDto);
+			Domain.Entities.WriteOffOperation operation = WarehouseMapper.ToEntity(createWriteOffOperationDto);
 
 			await _repository.AddAsync(operation, cancellationToken);
 
@@ -71,9 +71,12 @@ namespace Warehouse.Application.Services
 			_logger.Information("Удалена операция Списание с ИД={id}", id);
 		}
 
-		public async Task ProcessOrder(OrderDto order)
+		public async Task ProcessOrder(OrderDto orderDto)
 		{
-			_logger.Information("Обработано Списание с ИД={id}", order.Id);
+			WriteOffOperationDto createWriteOffOperationDto = OrderMapper.ToWriteOffOperationDto(orderDto);
+			var res = await CreateAsync(createWriteOffOperationDto, CancellationToken.None);
+
+			_logger.Information("Обработано Списание с ИД={id}", orderDto.Id);
 
 			await Task.CompletedTask; 
 		}
