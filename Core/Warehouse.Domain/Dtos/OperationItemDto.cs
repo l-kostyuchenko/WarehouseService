@@ -2,9 +2,9 @@
 {
 	public class OperationItemDto	
 	{
-		public int BaseOperationId { get; set; }
+		public int OperationId { get; set; }
 		
-		public int WarehouseItemId { get; set; }
+		public int BookId { get; set; }
 		
 		public int Count { get; set; }
 		public decimal Price { get; set; }

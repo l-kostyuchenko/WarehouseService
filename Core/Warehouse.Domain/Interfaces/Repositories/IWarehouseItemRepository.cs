@@ -8,5 +8,7 @@ namespace Warehouse.Domain.Repositories
 		Task<List<WarehouseItem>> GetAllAsync(CancellationToken cancellationToken);
 		Task<WarehouseItem> GetByIdAsync(int id, CancellationToken cancellationToken);
 		Task UpdateAsync(WarehouseItem entity, CancellationToken cancellationToken);
+
+		Task<WarehouseItem> GetByBookIdAsync(int id, CancellationToken cancellationToken);
 	}
 }

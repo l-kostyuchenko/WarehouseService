@@ -41,21 +41,7 @@ namespace Warehouse.WebApi.Controllers
 				return BadRequest(ex.Message);
 			}
 		}
-
-		[HttpPut]
-		public async Task<IActionResult> UpdateReceiptOperation(ReceiptOperationDto updateDto, CancellationToken cancellationToken)
-		{
-			try
-			{
-				await _service.UpdateAsync(updateDto, cancellationToken);
-				return NoContent();
-			}
-			catch (KeyNotFoundException)
-			{
-				return NotFound();
-			}
-		}
-
+		
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteReceiptOperation(int id, CancellationToken cancellationToken)
 		{

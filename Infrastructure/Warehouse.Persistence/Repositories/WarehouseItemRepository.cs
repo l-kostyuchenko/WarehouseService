@@ -44,5 +44,13 @@ namespace Warehouse.Persistence.Repositories
 			await _context.SaveChangesAsync(cancellationToken);
 			return entity;
 		}
+
+		public async Task<WarehouseItem> GetByBookIdAsync(int id, CancellationToken cancellationToken)
+		{
+			var entity = await _context.WarehouseItems
+				.FirstOrDefaultAsync(b => b.BookId == id, cancellationToken);
+
+			return entity;
+		}
 	}
 }

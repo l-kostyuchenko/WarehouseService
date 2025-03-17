@@ -42,20 +42,6 @@ namespace Warehouse.WebApi.Controllers
 			}
 		}
 
-		[HttpPut]
-		public async Task<IActionResult> UpdateWriteOffOperation(WriteOffOperationDto updateDto, CancellationToken cancellationToken)
-		{
-			try
-			{
-				await _service.UpdateAsync(updateDto, cancellationToken);
-				return NoContent();
-			}
-			catch (KeyNotFoundException)
-			{
-				return NotFound();
-			}
-		}
-
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteWriteOffOperation(int id, CancellationToken cancellationToken)
 		{

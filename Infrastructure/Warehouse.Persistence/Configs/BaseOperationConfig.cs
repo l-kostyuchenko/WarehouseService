@@ -10,7 +10,7 @@ namespace Warehouse.Persistence.Configs
 		{
 			builder.ToTable("operations");
 			builder.HasKey(x => x.Id);
-			builder.HasMany(x => x.OperationItems).WithOne(x => x.BaseOperation);
+			builder.HasMany(x => x.OperationItems).WithOne(x => x.Operation);
 
 			builder.HasDiscriminator<string>("operation_type");
 		}

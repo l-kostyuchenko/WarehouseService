@@ -6,6 +6,7 @@ namespace Warehouse.Domain.Services
 	{
 		Task<WarehouseItemDto> CreateWarehouseItemAsync(CreateWarehouseItemDto createWarehouseItemDto, CancellationToken cancellationToken);
 		Task<WarehouseItemDto> GetWarehouseItemByIdAsync(int id, CancellationToken cancellationToken);
+		Task<WarehouseItemDto> GetWarehouseItemByBookIdAsync(int id, CancellationToken cancellationToken);
 		Task UpdateWarehouseItemAsync(WarehouseItemDto updateWarehouseItemDto, CancellationToken cancellationToken);
 		Task ChangeCount(int id, int count, CancellationToken cancellationToken);
 	}

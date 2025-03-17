@@ -43,13 +43,13 @@ namespace Warehouse.Application.Services
 			await _repository.UpdateAsync(warehouseItem, cancellationToken);
 		}
 
-		public async Task ChangeCount(int id, int count, CancellationToken cancellationToken)
+		public async Task ChangeCount(int bookId, int count, CancellationToken cancellationToken)
 		{
-			var warehouseItem = await _repository.GetByIdAsync(id, cancellationToken);
+			var warehouseItem = await _repository.GetByBookIdAsync(bookId, cancellationToken);
 			if (warehouseItem == null)
 				warehouseItem = await _repository.CreateAsync(new WarehouseItem
 				{
-					Id = id
+					BookId = bookId
 				}, cancellationToken);
 
 			warehouseItem.Quantity += count;
@@ -57,6 +57,15 @@ namespace Warehouse.Application.Services
 				throw new InvalidOperationException("Количество меньше нуля");
 
 			await _repository.UpdateAsync(warehouseItem, cancellationToken);
+		}
+
+		public async Task<WarehouseItemDto> GetWarehouseItemByBookIdAsync(int id, CancellationToken cancellationToken)
+		{
+			var warehouseItem = await _repository.GetByBookIdAsync(id, cancellationToken);
+			if (warehouseItem == null)
+				return null;
+
+			return WarehouseMapper.ToDto(warehouseItem);
 		}
 	}
 }

@@ -32,7 +32,7 @@ namespace Warehouse.WebApi.Controllers
 			}
 			catch (Exception ex)
 			{
-				return StatusCode(500, $"Ошибка обработки: {ex.Message}");
+				return StatusCode(StatusCodes.Status500InternalServerError, $"Ошибка обработки: {ex.Message}");
 			}
 		}
 
@@ -41,12 +41,12 @@ namespace Warehouse.WebApi.Controllers
 		{
 			try
 			{
-				var res = await _warehouseItemService.GetWarehouseItemByIdAsync(bookId, CancellationToken.None);
-				return Ok(res.Quantity);
+				var res = await _warehouseItemService.GetWarehouseItemByBookIdAsync(bookId, CancellationToken.None);
+				return Ok(res?.Quantity);
 			}
 			catch (Exception ex)
 			{
-				return StatusCode(500, $"Ошибка обработки: {ex.Message}");
+				return StatusCode(StatusCodes.Status500InternalServerError, $"Ошибка обработки: {ex.Message}");
 			}
 		}
 	}

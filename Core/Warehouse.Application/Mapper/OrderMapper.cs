@@ -17,7 +17,7 @@ namespace Warehouse.Application.Mapper
 			return new OperationItemDto
 			{
 				//BaseOperationId = 0,
-				WarehouseItemId = orderItem.BookId,
+				BookId = orderItem.BookId,
 				Count = orderItem.Quantity,
 				Price = 0, // Установите цену
 			};
