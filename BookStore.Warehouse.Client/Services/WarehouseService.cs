@@ -14,7 +14,14 @@ namespace BookStore.Warehouse.Client.Services
             _api = api;
         }
 
-        public async Task<Result<string>> ProcessOrder(OrderDto orderDto)
+		public async Task<Result<int>> GetBookCount(int bookId)
+		{
+			var result = await _api.GetBookCount(bookId);
+
+			return HandleResponse(result);
+		}
+
+		public async Task<Result<string>> ProcessOrder(OrderDto orderDto)
         {
             var result = await _api.ProcessOrder(orderDto);
 

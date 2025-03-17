@@ -1,7 +1,9 @@
 ﻿using Asp.Versioning;
 using BookStore.Warehouse.Client.Dtos;
+using BookStore.Warehouse.Client.Services;
 using Microsoft.AspNetCore.Mvc;
 using Warehouse.Domain.Interfaces.Services;
+using Warehouse.Domain.Services;
 
 namespace Warehouse.WebApi.Controllers
 {
@@ -10,11 +12,14 @@ namespace Warehouse.WebApi.Controllers
 	[ApiVersion("1.0")]
 	public class WarehouseController : ControllerBase
 	{
-		private readonly IWriteOffOperationService _service;
+		private readonly IWriteOffOperationService _writeOffOperationService;
+		private readonly IWarehouseItemService _warehouseItemService;
 
-		public WarehouseController(IWriteOffOperationService warehouseService)
+		public WarehouseController(IWriteOffOperationService writeOffOperationService, 
+			IWarehouseItemService warehouseItemService)
 		{
-			_service = warehouseService;
+			_writeOffOperationService = writeOffOperationService;
+			_warehouseItemService = warehouseItemService;
 		}
 
 		[HttpPost("ProcessOrder")]
@@ -22,8 +27,22 @@ namespace Warehouse.WebApi.Controllers
 		{
 			try
 			{
-				await _service.ProcessOrder(order); 
+				await _writeOffOperationService.ProcessOrder(order); 
 				return Ok("Обработано успешно");
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Ошибка обработки: {ex.Message}");
+			}
+		}
+
+		[HttpGet("GetBookCount")]
+		public async Task<IActionResult> GetBookCount(int bookId)
+		{
+			try
+			{
+				var res = await _warehouseItemService.GetWarehouseItemByIdAsync(bookId, CancellationToken.None);
+				return Ok(res.Quantity);
 			}
 			catch (Exception ex)
 			{

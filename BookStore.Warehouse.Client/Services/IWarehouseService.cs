@@ -6,5 +6,7 @@ namespace BookStore.Warehouse.Client.Services
     public interface IWarehouseService
     {
         Task<Result<string>> ProcessOrder(OrderDto orderDto);
-    }
+
+		Task<Result<int>> GetBookCount(int bookId);
+	}
 }
